@@ -1,7 +1,6 @@
-import { IPlansRepository } from "modules/plans/repositories/IPlansRepository";
+import { Plan } from "@modules/plans/infra/typeorm/entities/Plan";
+import { IPlansRepository } from "@modules/plans/repositories/IPlansRepository";
 import { getRepository, Repository } from "typeorm";
-
-import { Plan } from "../entities/Plan";
 
 class PlansRepository implements IPlansRepository {
   private repository: Repository<Plan>;
