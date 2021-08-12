@@ -1,6 +1,3 @@
-import { Client } from "modules/clients/infra/typeorm/entities/Client";
-import { PaymentType } from "modules/payment/infra/typeorm/entities/PaymentType";
-import { Plan } from "modules/plans/infra/typeorm/entities/Plan";
 import {
   Entity,
   PrimaryColumn,
@@ -10,6 +7,10 @@ import {
   OneToOne,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { Client } from "../../../../clients/infra/typeorm/entities/Client";
+import { PaymentType } from "../../../../payment/infra/typeorm/entities/PaymentType";
+import { Plan } from "../../../../plans/infra/typeorm/entities/Plan";
 
 @Entity("memberships")
 class Membership {

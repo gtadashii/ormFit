@@ -1,6 +1,7 @@
-import { Plan } from "@modules/plans/infra/typeorm/entities/Plan";
-import { IPlansRepository } from "@modules/plans/repositories/IPlansRepository";
 import { getRepository, Repository } from "typeorm";
+
+import { IPlansRepository } from "../../../repositories/IPlansRepository";
+import { Plan } from "../entities/Plan";
 
 class PlansRepository implements IPlansRepository {
   private repository: Repository<Plan>;
@@ -9,12 +10,18 @@ class PlansRepository implements IPlansRepository {
     this.repository = getRepository(Plan);
   }
 
-  async create(description: string): Promise<void> {
+  async create(description: string): Promise<Plan> {
     const plan = this.repository.create({
       description,
     });
 
     await this.repository.save(plan);
+    return plan;
+  }
+
+  async findById(id: string): Promise<Plan | undefined> {
+    const plan = await this.repository.findOne({ id });
+    return plan;
   }
 }
 
