@@ -23,6 +23,11 @@ class PlansRepository implements IPlansRepository {
     const plan = await this.repository.findOne({ id });
     return plan;
   }
+
+  async findByDescription(description: string): Promise<Plan | undefined> {
+    const plan = await this.repository.findOne({ description });
+    return plan;
+  }
 }
 
 export { PlansRepository };

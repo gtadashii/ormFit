@@ -12,6 +12,9 @@ class PlansRepositoryInMemory implements IPlansRepository {
   async findById(id: string): Promise<Plan | undefined> {
     return this.plans.find((plan) => plan.id === id);
   }
+  async findByDescription(description: string): Promise<Plan | undefined> {
+    return this.plans.find((plan) => plan.description === description);
+  }
 }
 
 export { PlansRepositoryInMemory };
