@@ -9,7 +9,7 @@ class CreatePlanUseCase {
     private plansRepository: IPlansRepository
   ) {}
 
-  async execute(description: string): Promise<void> {
+  async execute(description: string, price: number): Promise<void> {
     const planAlreadyExists = await this.plansRepository.findByDescription(
       description
     );
@@ -18,7 +18,7 @@ class CreatePlanUseCase {
       throw new Error("This plan already exists");
     }
 
-    this.plansRepository.create(description);
+    this.plansRepository.create(description, price);
   }
 }
 

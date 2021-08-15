@@ -10,9 +10,10 @@ class PlansRepository implements IPlansRepository {
     this.repository = getRepository(Plan);
   }
 
-  async create(description: string): Promise<Plan> {
+  async create(description: string, price: number): Promise<Plan> {
     const plan = this.repository.create({
       description,
+      price,
     });
 
     await this.repository.save(plan);

@@ -3,9 +3,9 @@ import { IPlansRepository } from "../IPlansRepository";
 
 class PlansRepositoryInMemory implements IPlansRepository {
   plans: Plan[] = [];
-  async create(description: string): Promise<Plan> {
+  async create(description: string, price: number): Promise<Plan> {
     const plan = new Plan();
-    Object.assign(plan, { description });
+    Object.assign(plan, { description, price });
     this.plans.push(plan);
     return plan;
   }

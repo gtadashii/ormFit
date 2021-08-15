@@ -10,7 +10,11 @@ describe("Create plan", () => {
 
   it("Should be able to create a new plan", async () => {
     const planDescription = "Test Plan";
-    const plan = await plansRepositoryInMemory.create(planDescription);
+    const planPrice = 10.0;
+    const plan = await plansRepositoryInMemory.create(
+      planDescription,
+      planPrice
+    );
     const createdPlan = (await plansRepositoryInMemory.findById(
       plan.id
     )) as Plan;
