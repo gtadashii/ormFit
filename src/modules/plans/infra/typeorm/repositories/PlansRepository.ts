@@ -1,6 +1,9 @@
 import { getRepository, Repository } from "typeorm";
 
-import { IPlansRepository } from "../../../repositories/IPlansRepository";
+import {
+  ICreatePlanDTO,
+  IPlansRepository,
+} from "../../../repositories/IPlansRepository";
 import { Plan } from "../entities/Plan";
 
 class PlansRepository implements IPlansRepository {
@@ -10,7 +13,7 @@ class PlansRepository implements IPlansRepository {
     this.repository = getRepository(Plan);
   }
 
-  async create(description: string, price: number): Promise<Plan> {
+  async create({ description, price }: ICreatePlanDTO): Promise<Plan> {
     const plan = this.repository.create({
       description,
       price,

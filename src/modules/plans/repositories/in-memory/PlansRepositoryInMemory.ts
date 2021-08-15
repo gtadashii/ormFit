@@ -1,9 +1,9 @@
 import { Plan } from "../../infra/typeorm/entities/Plan";
-import { IPlansRepository } from "../IPlansRepository";
+import { ICreatePlanDTO, IPlansRepository } from "../IPlansRepository";
 
 class PlansRepositoryInMemory implements IPlansRepository {
   plans: Plan[] = [];
-  async create(description: string, price: number): Promise<Plan> {
+  async create({ description, price }: ICreatePlanDTO): Promise<Plan> {
     const plan = new Plan();
     Object.assign(plan, { description, price });
     this.plans.push(plan);

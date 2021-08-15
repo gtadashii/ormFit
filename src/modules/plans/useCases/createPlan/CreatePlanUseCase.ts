@@ -1,6 +1,9 @@
 import { inject, injectable } from "tsyringe";
 
-import { IPlansRepository } from "../../repositories/IPlansRepository";
+import {
+  ICreatePlanDTO,
+  IPlansRepository,
+} from "../../repositories/IPlansRepository";
 
 @injectable()
 class CreatePlanUseCase {
@@ -9,7 +12,7 @@ class CreatePlanUseCase {
     private plansRepository: IPlansRepository
   ) {}
 
-  async execute(description: string, price: number): Promise<void> {
+  async execute({ description, price }: ICreatePlanDTO): Promise<void> {
     const planAlreadyExists = await this.plansRepository.findByDescription(
       description
     );
@@ -18,7 +21,7 @@ class CreatePlanUseCase {
       throw new Error("This plan already exists");
     }
 
-    this.plansRepository.create(description, price);
+    await this.plansRepository.create({ description, price });
   }
 }
 
