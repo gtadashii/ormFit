@@ -15,6 +15,9 @@ class PlansRepositoryInMemory implements IPlansRepository {
   async findByDescription(description: string): Promise<Plan | undefined> {
     return this.plans.find((plan) => plan.description === description);
   }
+  async listAll(): Promise<Plan[]> {
+    return this.plans;
+  }
 }
 
 export { PlansRepositoryInMemory };

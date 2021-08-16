@@ -9,6 +9,7 @@ interface IPlansRepository {
   create({ description, price }: ICreatePlanDTO): Promise<Plan>;
   findById(id: string): Promise<Plan | undefined>;
   findByDescription(description: string): Promise<Plan | undefined>;
+  listAll(): Promise<Plan[]>;
 }
 
 export { IPlansRepository, ICreatePlanDTO };

@@ -32,6 +32,11 @@ class PlansRepository implements IPlansRepository {
     const plan = await this.repository.findOne({ description });
     return plan;
   }
+
+  async listAll(): Promise<Plan[]> {
+    const plans = await this.repository.find();
+    return plans;
+  }
 }
 
 export { PlansRepository };

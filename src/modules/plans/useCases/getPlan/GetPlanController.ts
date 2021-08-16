@@ -6,7 +6,6 @@ import { GetPlanUseCase } from "./GetPlanUseCase";
 class GetPlanController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    console.log("id: ", id);
     const getPlanUseCase = container.resolve(GetPlanUseCase);
     const plan = await getPlanUseCase.execute(id);
     return response.json(plan);
