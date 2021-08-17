@@ -5,11 +5,17 @@ interface ICreatePlanDTO {
   price: number;
 }
 
+interface IUpdatePlanPriceDTO {
+  id: string;
+  price: number;
+}
+
 interface IPlansRepository {
   create({ description, price }: ICreatePlanDTO): Promise<Plan>;
   findById(id: string): Promise<Plan | undefined>;
   findByDescription(description: string): Promise<Plan | undefined>;
   listAll(): Promise<Plan[]>;
+  updatePrice({ id, price }: IUpdatePlanPriceDTO): Promise<void>;
 }
 
-export { IPlansRepository, ICreatePlanDTO };
+export { IPlansRepository, ICreatePlanDTO, IUpdatePlanPriceDTO };

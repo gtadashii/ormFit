@@ -1,5 +1,9 @@
 import { Plan } from "../../infra/typeorm/entities/Plan";
-import { ICreatePlanDTO, IPlansRepository } from "../IPlansRepository";
+import {
+  ICreatePlanDTO,
+  IPlansRepository,
+  IUpdatePlanPriceDTO,
+} from "../IPlansRepository";
 
 class PlansRepositoryInMemory implements IPlansRepository {
   plans: Plan[] = [];
@@ -17,6 +21,10 @@ class PlansRepositoryInMemory implements IPlansRepository {
   }
   async listAll(): Promise<Plan[]> {
     return this.plans;
+  }
+  async updatePrice({ id, price }: IUpdatePlanPriceDTO): Promise<void> {
+    const index = this.plans.findIndex((plan) => plan.id === id);
+    this.plans[index].price = price;
   }
 }
 
