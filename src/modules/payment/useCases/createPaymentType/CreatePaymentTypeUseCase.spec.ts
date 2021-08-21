@@ -7,10 +7,10 @@ describe("Create Payment Type", () => {
     paymentTypesRepositoryInMemory = new PaymentTypesRepositoryInMemory();
   });
   it("Should be able to create a new payment type", async () => {
-    const paymentType = "New payment type";
-    const createdPaymentType = await paymentTypesRepositoryInMemory.create(
-      paymentType
+    const description = "New payment type";
+    const newPaymentType = await paymentTypesRepositoryInMemory.create(
+      description
     );
-    expect(createdPaymentType.description).toEqual("New payment type");
+    expect(newPaymentType).toHaveProperty("id");
   });
 });
