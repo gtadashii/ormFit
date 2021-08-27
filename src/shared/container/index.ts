@@ -1,5 +1,7 @@
 import { container } from "tsyringe";
 
+import { ClientsRepository } from "../../modules/clients/infra/typeorm/repositories/ClientsRepository";
+import { IClientsRepository } from "../../modules/clients/repositories/IClientsRepository";
 import { PaymentTypesRepository } from "../../modules/payment/infra/typeorm/repositories/PaymentTypesRepository";
 import { IPaymentTypesRepository } from "../../modules/payment/repositories/IPaymentTypesRepository";
 import { PlansRepository } from "../../modules/plans/infra/typeorm/repositories/PlansRepository";
@@ -13,4 +15,9 @@ container.registerSingleton<IPlansRepository>(
 container.registerSingleton<IPaymentTypesRepository>(
   "PaymentTypesRepository",
   PaymentTypesRepository
+);
+
+container.registerSingleton<IClientsRepository>(
+  "ClientsRepository",
+  ClientsRepository
 );
