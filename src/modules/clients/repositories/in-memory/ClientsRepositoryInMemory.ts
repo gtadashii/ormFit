@@ -9,7 +9,7 @@ class ClientsRepositoryInMemory implements IClientsRepository {
   clients: Client[] = [];
   async create({
     name,
-    bithdate,
+    birthdate,
     gender,
     document,
     email,
@@ -18,7 +18,7 @@ class ClientsRepositoryInMemory implements IClientsRepository {
     const client = new Client();
     Object.assign(client, {
       name,
-      bithdate,
+      birthdate,
       gender,
       document,
       email,
