@@ -2,7 +2,7 @@ import { Client } from "../infra/typeorm/entities/Client";
 
 interface ICreateClientDTO {
   name: string;
-  bithdate: Date;
+  birthdate: Date;
   gender: string;
   document: string;
   email: string;
@@ -18,7 +18,7 @@ interface IUpdateClientDTO {
 interface IClientsRepository {
   create({
     name,
-    bithdate,
+    birthdate,
     gender,
     document,
     email,

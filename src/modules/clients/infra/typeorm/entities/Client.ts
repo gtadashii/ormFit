@@ -8,7 +8,7 @@ class Client {
   @Column()
   name!: string;
   @Column()
-  bithdate!: Date;
+  birthdate!: Date;
   @Column()
   gender!: string;
   @Column()

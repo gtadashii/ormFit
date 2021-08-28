@@ -16,7 +16,7 @@ class ClientsRepository implements IClientsRepository {
 
   async create({
     name,
-    bithdate,
+    birthdate,
     gender,
     document,
     email,
@@ -24,7 +24,7 @@ class ClientsRepository implements IClientsRepository {
   }: ICreateClientDTO): Promise<Client> {
     const client = this.repository.create({
       name,
-      bithdate,
+      birthdate,
       gender,
       document,
       email,
